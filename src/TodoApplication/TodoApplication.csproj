@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C92589E2-9D6D-44C9-AA8C-82C27626D3E8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TodoApplication</RootNamespace>
+    <AssemblyName>TodoApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\proj\EventStore.Serialization.Json\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Aggregate\AggregateBase.cs" />
+    <Compile Include="Aggregate\ConventionEventRouter.cs" />
+    <Compile Include="Aggregate\ExtensionMethods.cs" />
+    <Compile Include="Aggregate\IAggregate.cs" />
+    <Compile Include="Aggregate\IRouteEvents.cs" />
+    <Compile Include="Aggregate\ListAggregate.cs" />
+    <Compile Include="Aggregate\ListState.cs" />
+    <Compile Include="Aggregate\RedirectToWhen.cs" />
+    <Compile Include="Aggregate\TodoItemAggregate.cs" />
+    <Compile Include="Data\Generator.cs" />
+    <Compile Include="Data\Persistence.cs" />
+    <Compile Include="Data\ScenarioAnalyser.cs" />
+    <Compile Include="Events\TodoItemDeleted.cs" />
+    <Compile Include="Events\IEvent.cs" />
+    <Compile Include="Events\ListNameChanged.cs" />
+    <Compile Include="Events\TodoItemIndexChanged.cs" />
+    <Compile Include="Events\TodoItemPriorityChanged.cs" />
+    <Compile Include="Events\TodoItemCreated.cs" />
+    <Compile Include="Events\TodoItemDescriptionChanged.cs" />
+    <Compile Include="Events\TodoItemNameChanged.cs" />
+    <Compile Include="Events\TodoItemPriorityDecreased.cs" />
+    <Compile Include="Events\TodoItemPriorityIncreased.cs" />
+    <Compile Include="Events\TodoItemsDeleted.cs" />
+    <Compile Include="Events\Unused.cs" />
+    <Compile Include="Exceptions\AggregateNotFoundExeption.cs" />
+    <Compile Include="Exceptions\HandlerForDomainEventNotFoundException.cs" />
+    <Compile Include="Interface\AddTodoItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\AddTodoItem.Designer.cs">
+      <DependentUpon>AddTodoItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\GeneratorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\GeneratorForm.Designer.cs">
+      <DependentUpon>GeneratorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Scenarios\HcScen-3.cs" />
+    <Compile Include="Interface\Scenarios\HcScen-2.cs" />
+    <Compile Include="Interface\Scenarios\CustomOBScenario.cs" />
+    <Compile Include="Interface\Scenarios\OfflineReplayStep.cs" />
+    <Compile Include="Interface\Scenarios\OnlineReplayStep.cs" />
+    <Compile Include="Interface\Scenarios\RandomScenarioGenerator.cs" />
+    <Compile Include="Interface\Scenarios\ReplayStep.cs" />
+    <Compile Include="Interface\Scenarios\HcScen-1.cs" />
+    <Compile Include="Interface\TodoItemPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Interface\ListPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Interface\TodoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface\TodoForm.Designer.cs">
+      <DependentUpon>TodoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Events\ListCreated.cs" />
+    <Compile Include="Interface\Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Interface\Scenarios\CustomScenario.cs" />
+    <Compile Include="Interface\Scenarios\Scenario.cs" />
+    <Compile Include="Prototypes\Conflict.cs" />
+    <Compile Include="Prototypes\MergingMethod.cs" />
+    <Compile Include="Prototypes\OperationalTransformationMerger.cs" />
+    <Compile Include="Prototypes\OperationBasedMerger.cs" />
+    <Compile Include="Prototypes\SyntacticMerger.cs" />
+    <EmbeddedResource Include="Interface\AddTodoItem.resx">
+      <DependentUpon>AddTodoItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\GeneratorForm.resx">
+      <DependentUpon>GeneratorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface\TodoForm.resx">
+      <DependentUpon>TodoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\proj\EventStore.Core\EventStore.Core.csproj">
+      <Project>{d6413244-42f5-4233-b347-d0a804b09cc9}</Project>
+      <Name>EventStore.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\proj\EventStore.Persistence.SqlPersistence\EventStore.Persistence.SqlPersistence.csproj">
+      <Project>{dafd3f38-33f3-4f53-bfea-44e51bd1e8f1}</Project>
+      <Name>EventStore.Persistence.SqlPersistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\proj\EventStore.Serialization.Json.Wireup\EventStore.Serialization.Json.Wireup.csproj">
+      <Project>{deffe0c3-2988-4c58-9e36-1302842ffdbd}</Project>
+      <Name>EventStore.Serialization.Json.Wireup</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\proj\EventStore.Serialization.Json\EventStore.Serialization.Json.csproj">
+      <Project>{cfd895bd-7cb2-4811-a6fa-1851df769b67}</Project>
+      <Name>EventStore.Serialization.Json</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\proj\EventStore.Serialization\EventStore.Serialization.csproj">
+      <Project>{a5bf4b86-26f6-418d-be35-c6cc3a623d27}</Project>
+      <Name>EventStore.Serialization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\proj\EventStore.Wireup\EventStore.Wireup.csproj">
+      <Project>{421664db-c18d-4499-abc1-c9086d525f80}</Project>
+      <Name>EventStore.Wireup</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\proj\EventStore\EventStore.csproj">
+      <Project>{03946843-f343-419c-88ef-3e446d08dfa6}</Project>
+      <Name>EventStore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SQLDeleteCommits\SQLDeleteCommits.csproj">
+      <Project>{b72d921a-3e6d-4f6f-ab5c-da0a49786ec4}</Project>
+      <Name>SQLDeleteCommits</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\woorden2.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
